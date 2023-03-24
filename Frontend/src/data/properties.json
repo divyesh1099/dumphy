@@ -1,0 +1,41 @@
+[
+    {
+      "Id": 1,
+      "SellRent": 1,
+      "Name": "Birla House",
+      "Type": "House",
+      "Price": 12000,
+      "Image": "property-1.svg"
+    }, 
+    {
+      "Id": 2,
+      "SellRent": 2,
+      "Name": "Erose Villa",
+      "Type": "House",
+      "Price": 12670,
+      "Image": "property-2.svg"
+    }, 
+    {
+      "Id": 3,
+      "SellRent": 1,
+      "Name": "Macro Home",
+      "Type": "Row House",
+      "Price": 14500,
+      "Image": "property-3.svg"
+    }, 
+    {
+      "Id": 4,
+      "SellRent": 1,
+      "Name": "Pearl White House",
+      "Type": "Flat",
+      "Price": 13500,
+      "Image": "property-4.svg"
+    }, 
+    {
+      "Id": 5,
+      "SellRent": 2,
+      "Name": "Nafisa Mahal",
+      "Type": "Bunglow",
+      "Price": 22890
+    }
+  ]
