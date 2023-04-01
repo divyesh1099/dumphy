@@ -2,7 +2,7 @@
   <div class="card-img-wrapper">
     <img *ngIf="property.Image" src="assets/images/{{ property.Image }}" class="card-img-top" alt="{{ property.Name }}">
     <img *ngIf="!property.Image" src="assets/images/default_house.png" class="card-img-top" alt="{{ property.Name }}">
-    <ul class="list-inline text-center member-icons animate">
+    <ul *ngIf="!hideIcons" class="list-inline text-center member-icons animate">
       <li class="list-inline-item">
         <button class="btn-btn-primary" routerLink="/property-detail/{{ property.Id }}">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
@@ -20,9 +20,19 @@
     </ul>
   </div>
   <div class="card-body p-2">
-    <h1>{{ property.Name}}</h1>
-    <h2>{{ property.Type}}</h2>
-    <h3>{{ property.Price}}</h3>
+    <h1 class="mb-0"> {{property.BHK}} BHK {{property.Type}} </h1>
+
+    in {{property.Name}}
+    <span *ngIf="property.Name">,</span>
+    {{property.City}}
+
+    <h6  class="mt-2">{{property.FurnishingType}}
+    <span *ngIf="property.FurnishingType !== 'Unfurnished'">Furnished</span> | Ready to Move</h6>
+
+    <hr class="mt-0 mb-2">
+
+    <h6 class="mb-0">Price: <span class="font-highlight">{{property.Price}} USD.</span> |
+      Area:  <span class="font-highlight">{{property.BuiltArea}} Sq Ft </span> </h6>
   </div>
 </div>
 
