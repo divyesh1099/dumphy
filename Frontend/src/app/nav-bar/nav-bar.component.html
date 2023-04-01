@@ -19,12 +19,46 @@
       </ul>
       
       <ul class="nav navbar-nav">
-        <li class="nav-item">
+        <li *ngIf="!loggedIn()" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/user/register">Register</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!loggedIn()" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/user/login">Login</a>
         </li>
+        <!-- <li *ngIf="loggedIn()" class="nav-item">
+          <a class="nav-link" routerLinkActive="active" (click)="onLogout()">Logout</a>
+        </li> -->
+        <div *ngIf="loggedIn()" class="dropdown mr-5" dropdown>
+          <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
+            Welcome {{ user }}
+          </a>
+          <div class="dropdown-menu" *dropdownMenu>
+            <a href="#" class="dropdown-item">
+              <div class="custom-dumphy-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" id="dashboard"><path fill="none" d="M0 0h48v48H0z"></path><path d="M6 26h16V6H6v20zm0 16h16V30H6v12zm20 0h16V22H26v20zm0-36v12h16V6H26z"></path></svg>
+              </div>
+              View Dashboard
+            </a>
+            <a href="#" class="dropdown-item">
+              <div class="custom-dumphy-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="profile"><g fill="none" fill-rule="evenodd" stroke="#200E32" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(4 2.5)"><circle cx="7.579" cy="4.778" r="4.778"></circle><path d="M5.32907052e-15,16.2013731 C-0.00126760558,15.8654831 0.0738531734,15.5336997 0.219695816,15.2311214 C0.677361723,14.3157895 1.96797958,13.8306637 3.0389178,13.610984 C3.81127745,13.4461621 4.59430539,13.3360488 5.38216724,13.2814646 C6.84083861,13.1533327 8.30793524,13.1533327 9.76660662,13.2814646 C10.5544024,13.3366774 11.3373865,13.4467845 12.1098561,13.610984 C13.1807943,13.8306637 14.4714121,14.270023 14.929078,15.2311214 C15.2223724,15.8479159 15.2223724,16.5639836 14.929078,17.1807781 C14.4714121,18.1418765 13.1807943,18.5812358 12.1098561,18.7917621 C11.3383994,18.9634099 10.5550941,19.0766219 9.76660662,19.1304349 C8.57936754,19.2310812 7.38658584,19.2494317 6.19681255,19.1853548 C5.92221301,19.1853548 5.65676678,19.1853548 5.38216724,19.1304349 C4.59663136,19.077285 3.8163184,18.9640631 3.04807112,18.7917621 C1.96797958,18.5812358 0.686515041,18.1418765 0.219695816,17.1807781 C0.0745982583,16.8746908 -0.000447947969,16.5401098 5.32907052e-15,16.2013731 Z"></path></g></svg>
+              </div>
+              My Profile
+            </a>
+            <a href="#" class="dropdown-item">
+              <div class="custom-dumphy-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="card-payment"><polygon points="200.75 224.78 310.09 224.78 310.09 122.06 91.4 122.06 91.4 296.82 200.75 296.82 200.75 224.78"></polygon><path d="M425.66,395H211.75V236.11H425.66Zm-203.8-10.11H415.54V246.22H221.86Z"></path><rect width="203.79" height="28.79" x="216.81" y="265.54"></rect><rect width="75.76" height="10.11" x="246.23" y="323.87"></rect><rect width="66.84" height="10.11" x="116.51" y="254.68" fill="#fff"></rect><rect width="141.52" height="10.11" x="246.23" y="351.56"></rect><rect width="45.59" height="31.68" x="116.51" y="193.93" fill="#fff"></rect></svg>
+              </div>
+              Change Password
+            </a>
+            <a href="#" class="dropdown-item" (click)="onLogout()">
+              <div class="custom-dumphy-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="logout"><path d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z"></path></svg>
+              </div>
+              Logout
+            </a>
+          </div>
+        </div>
       </ul>
     </div>
   </div>

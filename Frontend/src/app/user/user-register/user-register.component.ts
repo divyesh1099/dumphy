@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/services/user.service';
+import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
   selector: 'app-user-register',
@@ -8,7 +11,15 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 })
 export class UserRegisterComponent implements OnInit {
   registrationForm!: FormGroup;
-  constructor(){}
+  userSubmitted: boolean = false;
+  user: User = {
+    userName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    mobile: 0
+  };
+  constructor(private fb: FormBuilder, private userService: UserService, private alertifyService: AlertifyService){}
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
       userName: new FormControl(null, Validators.required),
@@ -18,6 +29,18 @@ export class UserRegisterComponent implements OnInit {
       mobile: new FormControl(null, [Validators.maxLength(10)])
     }, this.passwordMatchingValidator);
   }
+
+  createRegistrationForm(){
+    // this.registrationForm = this.fb.group({
+    //   userName: [null, Validators.required],
+    //   email: [null, [Validators.required, Validators.email]],
+    //   password: [null, [Validators.required, Validators.minLength(8)]], 
+    //   confirmPassword: [null, [Validators.required]],
+    //   mobile: [null, [Validators.maxLength(10)]]
+    // }, {validators: this.passwordMatchingValidator})
+    this.createRegistrationForm();
+  }
+
   // Custom Validator To CHeck if Password and Confirm Passwords Match or not
   passwordMatchingValidator(fg: AbstractControl): Validators{
     if (fg.get('password')?.value === fg.get('confirmPassword')?.value){
@@ -49,6 +72,26 @@ export class UserRegisterComponent implements OnInit {
     return this.registrationForm.get('mobile') as FormControl;
   }
   onSubmit(){
-    console.log(this.registrationForm);
+    this.userSubmitted = true;
+    if(this.registrationForm.valid){
+      this.userSubmitted = true;
+      this.userService.addUser(this.userData());
+      this.registrationForm.reset();
+      this.userSubmitted = false;
+      this.alertifyService.success('Congratulations, you are successfully registered');
+    } else {
+      this.alertifyService.error('Kindly Resolve Errors Before Submitting');
+    }
+  }
+  
+  userData(): User{
+    this.user = {
+      userName: this.userName.value,
+      email: this.email.value,
+      password: this.password.value,
+      confirmPassword: this.confirmPassword.value,
+      mobile: this.mobile.value
+    }
+    return this.user
   }
 }
