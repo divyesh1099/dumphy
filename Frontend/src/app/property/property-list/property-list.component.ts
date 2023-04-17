@@ -12,7 +12,10 @@ import { Property } from 'src/app/model/completeProperty';
 export class PropertyListComponent implements OnInit {
   SellRent: number = 1;
   properties: Array<PropertyBase> = [];
-
+  City = '';
+  SearchCity = '';
+  SortByParam = '';
+  SortDirection = 'asc';
   constructor (private route: ActivatedRoute, private housingService: HousingService) {}
 
   ngOnInit(): void {
@@ -26,6 +29,23 @@ export class PropertyListComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  onCityFilter(){
+    this.SearchCity = this.City;
+  }
+
+  onCityFilterClear(){
+    this.SearchCity = '';
+    this.City = '';
+  }
+
+  onSortDirectionChange(){
+    if(this.SortDirection == 'desc'){
+      this.SortDirection = 'asc'
+    }else if(this.SortDirection == 'asc'){
+      this.SortDirection = 'desc'
+    }
   }
   
 }

@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "alertifyjs": "^1.13.1"
+    "@kolkov/ngx-gallery": "^2.0.1",
+    "alertifyjs": "^1.13.1",
+    "font-awesome": "^4.7.0",
+    "hammerjs": "^2.0.8"
   }
 }

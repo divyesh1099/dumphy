@@ -15,15 +15,16 @@ export class HousingService {
   getProperty(id: number){
     return this.getAllProperties().pipe(
       map(properties => {
-        return properties.find(property => property.Id == id);
+        
+        return properties.find(property => property.Id == id)!;
       })
     )
   }
 
-  getAllProperties(SellRent?: number): Observable<Array<PropertyBase>>{
-    return this.http.get<Array<PropertyBase>>("data/properties.json").pipe(
+  getAllProperties(SellRent?: number): Observable<Array<Property>>{
+    return this.http.get<Array<Property>>("data/properties.json").pipe(
       map(data=> {
-        const propertiesArray : Array<PropertyBase> = [];
+        const propertiesArray : Array<Property> = [];
         const localProperties = JSON.parse(localStorage.getItem('newProp')!);
         if(localProperties){
 
@@ -51,7 +52,7 @@ export class HousingService {
 
         return propertiesArray;
       })
-    );
+    )!;
   }
 
   addProperty(property: Property){

@@ -13,8 +13,16 @@ export class PropertyDetailComponent implements OnInit {
   public property = new Property();
   constructor(private route: ActivatedRoute, private router: Router, private housingService: HousingService){}
   ngOnInit(){
+
     // "+" converts string to number
     this.propertyId = +this.route.snapshot.params['Id'];
+
+    // Resolver method to avoid loading of component if teh API does not return the appropriate data
+    // this.route.data.subscribe(
+    //   data =>{
+    //     this.property = data["prp"];
+    //   }
+    // )
 
     // A Router Link Does Not get instantiated if it is on the same route, because of performance reasons. 
     // So our URL may change but our Componet Does not refresh. 
@@ -41,7 +49,7 @@ export class PropertyDetailComponent implements OnInit {
             this.property.Maintenance = data!.Maintenance;
             this.property.Description = data!.Description;
             this.property.Image = data!.Image;
-          }
+          }, error => this.router.navigate(['/'])
         )
       }
     )
