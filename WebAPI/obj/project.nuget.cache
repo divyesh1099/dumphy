@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "ClEgKb89GE5z1OCaL1U8bNSrfTcY4SkuKc1aCV3rgOa+7JPXHvFQ+7SH9dkCiCsZo8DCeqO55OO/bJ3KlCa2gw==",
+  "success": true,
+  "projectFilePath": "D:\\Divyesh\\MVC Projects\\dumphy\\WebAPI\\WebAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\divye\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.0-preview.3.23177.8\\microsoft.aspnetcore.openapi.8.0.0-preview.3.23177.8.nupkg.sha512",
+    "C:\\Users\\divye\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\divye\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\divye\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\divye\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\divye\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\divye\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
