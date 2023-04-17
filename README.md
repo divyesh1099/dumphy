@@ -1,7 +1,7 @@
 # dumphy
 ASP.NET Core + Angular + Bootstrap Project that is a Real Estate Website App
 
-### Deployed to https://dumphy-motidivya.web.app/
+### Deployed to https://dumphy-motidivya.web.app/ using https://firebase.com
 
 ### Angular Topics + Concepts Implemented
 1. Bindings (One Way + Two Way)
