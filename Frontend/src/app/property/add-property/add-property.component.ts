@@ -21,6 +21,7 @@ export class AddPropertyComponent implements OnInit {
 
   addPropertyForm!: FormGroup;
   nextClicked!: boolean;
+  cityList: any[] = [];
 
   property: Property = new Property();
 
@@ -45,32 +46,32 @@ export class AddPropertyComponent implements OnInit {
       BasicInfo: this.fb.group({
         SellRent: [1, Validators.required],
         BHK: [1],
-        Type: ["", Validators.required], 
+        Type: ["", Validators.required],
         FurnishingType: [""],
-        Name: ['', Validators.required], 
+        Name: ['', Validators.required],
         City: ['']
       }),
       PricingInfo: this.fb.group({
-        Price: [0, Validators.required], 
-        BuiltArea: [0, Validators.required], 
+        Price: [0, Validators.required],
+        BuiltArea: [0, Validators.required],
         CarpetArea: [null],
-        Security: [null], 
+        Security: [null],
         Maintenance: [null]
       }),
       AddressInfo: this.fb.group({
-        FloorNo: [null], 
-        TotalFloor: [null], 
-        Address: [null, Validators.required], 
+        FloorNo: [null],
+        TotalFloor: [null],
+        Address: [null, Validators.required],
         Landmark: [null]
 
       }),
       OtherInfo: this.fb.group({
-        RTM: ['No', Validators.required], 
-        PosessionOn: [null], 
+        RTM: ['No', Validators.required],
+        PosessionOn: [null],
         RTMW: [null],
         AOP: [null],
-        Gated: [null], 
-        MainEntrance: [null], 
+        Gated: [null],
+        MainEntrance: [null],
         Description: [null]
       }),
       PhotoInfo: this.fb.group({
@@ -108,6 +109,10 @@ export class AddPropertyComponent implements OnInit {
 
   ngOnInit(): void {
       this.createAddPropertyForm();
+      this.housingService.getAllCities().subscribe(data=>{
+        console.log(data);
+        this.cityList = data;
+      })
   }
 
   onBack(){
@@ -189,13 +194,13 @@ export class AddPropertyComponent implements OnInit {
     return this.addPropertyForm.controls['PhotoInfo'] as FormGroup;
   }
   //#endregion
-  
+
 
   //#region BasicInfo Getter Methods
   get SellRent(){
-    return this.BasicInfo.controls['SellRent'] as FormControl; 
+    return this.BasicInfo.controls['SellRent'] as FormControl;
   }
-  
+
   get BHK(){
     return this.BasicInfo.controls['BHK'] as FormControl;
   }
@@ -243,11 +248,11 @@ export class AddPropertyComponent implements OnInit {
   get FloorNo(){
     return this.AddressInfo.controls['FloorNo'] as FormControl;
   }
-  
+
   get TotalFloor(){
     return this.AddressInfo.controls['TotalFloor'] as FormControl;
   }
-  
+
   get Address(){
     return this.AddressInfo.controls['Address'] as FormControl;
   }
@@ -255,25 +260,25 @@ export class AddPropertyComponent implements OnInit {
   get Address2(){
     return this.AddressInfo.controls['Address2'] as FormControl;
   }
-  
+
   get Landmark(){
     return this.AddressInfo.controls['Landmark'] as FormControl;
   }
   //#endregion
 
-  //#region OtherInfo Getter Methods  
+  //#region OtherInfo Getter Methods
   get RTM(){
     return this.OtherInfo.controls['RTM'] as FormControl;
   }
-  
+
   get PosessionOn(){
     return this.OtherInfo.controls['PosessionOn'] as FormControl;
   }
-  
+
   get RTMW(){
     return this.OtherInfo.controls['RTMW'] as FormControl;
   }
-  
+
   get AOP(){
     return this.OtherInfo.controls['AOP'] as FormControl;
   }
