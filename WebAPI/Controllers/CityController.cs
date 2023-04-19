@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Data;
 using WebAPI.Data.Repository.IRepository;
+using WebAPI.DTOs;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
@@ -13,21 +15,32 @@ namespace WebAPI.Controllers
 	{
 		private readonly ICityRepository _cityRepository;
 		private readonly IUnitOfWork _unitOfWork;
-		public CityController(DataContext dataContext, ICityRepository cityRepository, IUnitOfWork unitOfWork)
+		private readonly IMapper _mapper;
+		public CityController(DataContext dataContext, ICityRepository cityRepository, IUnitOfWork unitOfWork, IMapper mapper)
 		{
 			_cityRepository = cityRepository;
 			_unitOfWork = unitOfWork;
+			_mapper = mapper;
+
+
 		}
 		[HttpGet]
 		public async Task<IActionResult> GetCities()
 		{
 			var cities = await _cityRepository.GetAllAsync();
-			return Ok(cities);
+			var citiesDTO = _mapper.Map<IEnumerable<CityDTO>>(cities);
+			return Ok(citiesDTO);
 		}
 
 		[HttpPost("addCity")]
-		public async Task<IActionResult> AddCity(City city)
+		public async Task<IActionResult> AddCity(CityDTO cityDTO)
 		{
+			var city = new City
+			{
+				Name = cityDTO.Name,
+				LastUpdated = DateTime.Now,
+				LastUpdatedBy = Guid.NewGuid().ToString()
+			};
 			_cityRepository.Add(city);
 			await _unitOfWork.SaveAsync();
 			/*City newCity = new City();
@@ -46,6 +59,22 @@ namespace WebAPI.Controllers
 				_cityRepository.Remove(cityFromDb);
 				await _unitOfWork.SaveAsync();
 				return Ok(id);
+			}
+			return NotFound();
+		}
+
+		[HttpPost("update/{id}")]
+		public async Task<IActionResult> UpdateCity(int id, CityDTO cityDTO)
+		{
+			City cityFromDb = await _cityRepository.GetAsync(u => u.Id == id);
+			if(cityFromDb != null)
+			{
+				cityFromDb.Name = cityDTO.Name;
+				cityFromDb.LastUpdated = DateTime.Now;
+				cityFromDb.LastUpdatedBy = Guid.NewGuid().ToString();
+				await _unitOfWork.City.UpdateAsync(cityFromDb);
+				await _unitOfWork.SaveAsync();
+				return Ok(cityDTO);
 			}
 			return NotFound();
 		}

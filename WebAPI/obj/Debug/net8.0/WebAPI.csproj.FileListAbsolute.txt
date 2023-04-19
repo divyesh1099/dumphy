@@ -75,3 +75,5 @@ D:\Divyesh\MVC Projects\dumphy\WebAPI\bin\Debug\net8.0\runtimes\win\lib\net7.0\S
 D:\Divyesh\MVC Projects\dumphy\WebAPI\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 D:\Divyesh\MVC Projects\dumphy\WebAPI\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\Divyesh\MVC Projects\dumphy\WebAPI\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+D:\Divyesh\MVC Projects\dumphy\WebAPI\bin\Debug\net8.0\AutoMapper.dll
+D:\Divyesh\MVC Projects\dumphy\WebAPI\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
