@@ -6,7 +6,8 @@ namespace WebAPI.Models
 	{
 		[Key]
 		public int Id { get; set; }
-		public string? Name { get; set; }
+		[Required(ErrorMessage ="Name is a mandatory field")]
+		public string Name { get; set; }
 		public DateTime? LastUpdated { get; set; }
 		public string? LastUpdatedBy { get; set; }
 	}

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +10,8 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class CityController : ControllerBase
+	[Authorize]
+	public class CityController : BaseController
 	{
 		private readonly ICityRepository _cityRepository;
 		private readonly IUnitOfWork _unitOfWork;

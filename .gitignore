@@ -2,3 +2,5 @@ node_modules/
 Frontend/node_modules/
 WebAPI/bin/
 WebAPI/obj/
+WebAPI/.vs/
+WebAPI/appsettings.json
