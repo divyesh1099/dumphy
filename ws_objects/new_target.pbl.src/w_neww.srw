@@ -31,6 +31,9 @@ on w_neww.destroy
 destroy(this.cb_1)
 end on
 
+event open;//hi this is test
+end event
+
 type cb_1 from commandbutton within w_neww
 integer x = 901
 integer y = 376
