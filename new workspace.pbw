@@ -1,0 +1,7 @@
+Save Format v3.0(19990112)
+@begin Targets
+ 0 "new_target.pbt";
+@end;
+DefaultTarget "new_target.pbt";
+DefaultExportEncode "UTF-8";
+DefaultRemoteTarget "new_target.pbt";

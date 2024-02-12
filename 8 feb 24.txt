@@ -1,0 +1,20 @@
+username = sle_1.text
+password1 = sle_2.text
+
+connect using (sqlca);
+
+select count(loginid) into :num from project where loginid = :username;
+num=integer('select count(loginid) into :num from project where loginid =:username');
+messagebox("value",'Count of loginid' + string(num))
+if num >=1 then
+
+	select count(password) into :num2 from project where password = :password1;
+	if num2 >=1 then	
+		open(w_add_employee)
+	else
+		Messagebox("Result", 'Wrong userid')
+	end if 
+else
+	Messagebox("Result", 'Invalid Password')
+end if
+	
